@@ -1,0 +1,53 @@
+.whyus{
+    padding: 20px;
+    margin-top: 10%;
+}
+
+.whyus h2{
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 5%;
+}
+
+.whyus__container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    /* width: 90%;
+    margin: 0 auto;
+    margin-left: 10%; */
+}
+
+
+.whyus__content{
+    /* flex-basis: 1; */
+    padding: 20px;
+    width: 20%;
+    height: 400px;
+    box-shadow: 2px 2px 8px 1px rgb(213, 201, 201);
+    border-radius: 4px
+}
+
+.whyus__icon{
+    font-size: 3rem;
+    color:  rgb(144, 8, 144);
+    padding: 20px;
+}
+
+.whyus__header{
+    font-size: 1.6rem;
+    padding: 5px;
+    font-weight: light;
+    color: #222;
+    margin-bottom: 10px;
+}
+
+.whyus__text{
+    font-size: .9rem;
+    padding: 5px;
+    width: 70%;
+    font-weight: light;
+    color: rgb(48, 44, 44);
+
+}
+

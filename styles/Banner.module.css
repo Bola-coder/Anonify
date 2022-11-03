@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Dangrek&family=Oswald:wght@500&display=swap');
+
+.banner{
+    padding: 30px 50px;
+    background-color: rgb(30, 17, 17);
+    color: #ffffff;
+    height: 100vh;
+}
+
+.header{
+    padding: 10px;
+}
+
+.header p {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2rem;
+    cursor: pointer;
+    letter-spacing: 1px;
+}
+.content{
+    margin-top: 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.banner__text{
+    flex-basis: 60%;
+}
+
+.banner__text h1{
+    font-size: 4rem;
+    width: 80%;
+}
+
+.banner__text p{
+    font-size: 1.1rem;
+    width: 80%;
+    margin-top: 20px;
+}
+
+.banner__text button{
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    margin-top: 4%;
+    font-family: 'Oswald', sans-serif;
+    font-size: 2rem;
+    /* font-weight: bolder; */
+    cursor: pointer;
+    color: rgb(144, 8, 144);
+}
+
+.banner__text button:hover{
+        opacity: 0.8;
+}
+
+.banner__image{
+    flex-basis: 30%;
+}

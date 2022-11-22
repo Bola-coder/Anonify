@@ -1,0 +1,88 @@
+.auth{
+    width: 70vw;
+    height: 80vh;
+    margin: 5% auto;
+    /* padding: 20px; */
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-radius: 4px;
+    box-shadow: 1px 1px 2px 2px #ddd;
+}
+
+.auth__image{
+    flex: 1.2;
+    height: 100%;
+    background-color: rgb(144, 8, 144);
+    border-radius: 4px;
+}
+
+.auth__image img{
+    margin-top: 30%;
+    margin-left: 5%;
+
+}
+
+.auth__form{
+    flex: 2;
+    text-align: center;
+    height: 100%;
+}
+
+.auth__content{
+    height: 80%;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 10%;
+    padding: 20px;
+    box-shadow: 1px 1px 1px 2px rgb(225, 222, 222);
+}
+.auth__form h3{
+    font-size: 1.5rem;
+    color: rgb(144, 8, 144);
+    margin-top: 10px;
+}
+
+.auth__group{
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.auth__input{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 5px;
+}
+
+.auth__input label{
+    color: #bbb;
+    font-size: .8rem;
+    font-weight: bold;
+}
+
+.auth__input input{
+    width: 80%;
+    padding: 8px 12px;
+    border: 0;
+    border-radius: 12px;
+    margin-top: 7px;
+    background-color: #ccc;
+}
+
+.auth__input input:focus{
+    outline: none;
+}
+
+.auth__content .auth__footer{
+    margin-top: 5%;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.auth__content .auth__footer span{
+    color: rgb(144, 8, 144);
+    cursor: pointer;
+}

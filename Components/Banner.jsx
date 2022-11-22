@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./../styles/Banner.module.css";
 
 const Banner = () => {
@@ -16,7 +17,9 @@ const Banner = () => {
             you can use to get message anonymously from people. It is free and
             easy to set up.
           </p>
+          <Link href='/signup'>          
           <button>START NOW</button>
+          </Link>
         </div>
         <div className={styles.banner__image}>
           <Image

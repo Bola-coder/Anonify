@@ -31,10 +31,10 @@
 }
 
 .auth__content{
-    height: 80%;
+    height: 85%;
     width: 80%;
     margin: 0 auto;
-    margin-top: 10%;
+    margin-top: 7%;
     padding: 20px;
     box-shadow: 1px 1px 1px 2px rgb(225, 222, 222);
 }
@@ -64,7 +64,7 @@
 }
 
 .auth__input input{
-    width: 80%;
+    width: 100%;
     padding: 8px 12px;
     border: 0;
     border-radius: 12px;
@@ -74,6 +74,19 @@
 
 .auth__input input:focus{
     outline: none;
+}
+
+
+.auth__btn{
+    padding: 10px;
+    border: 0;
+    border-radius: 15px;
+    background-color: rgb(144, 8, 144);
+    color: #fff;
+    width: 50%;
+    margin-top: 10px;
+    cursor: pointer;
+    font-weight: bold;
 }
 
 .auth__content .auth__footer{

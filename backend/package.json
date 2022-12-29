@@ -1,0 +1,19 @@
+{
+  "name": "anonify-backend",
+  "version": "1.0.0",
+  "description": "The backend for anonify project",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bolarinwa Ahmed",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^6.8.1",
+    "morgan": "^1.10.0"
+  }
+}

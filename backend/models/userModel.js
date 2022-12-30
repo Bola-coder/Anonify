@@ -18,6 +18,10 @@ const userSchema = mongoose.Schema({
   password: {
     type: String,
     minLength: [8, "Your password should be a minimum of 8 characters"],
+    select: false,
+  },
+  passwordChangedAt: {
+    type: Date,
   },
 });
 
@@ -28,6 +32,21 @@ userSchema.pre("save", async function (next) {
   this.password = await bcrypt.hash(this.password, salt);
   next();
 });
+
+userSchema.pre("save", async function (next) {
+  if (!this.isModified("password") || this.isNew) {
+    return next();
+  }
+  this.passwordChangedAt = Date.now - 2000;
+});
+
+// Creating an instance method to compare password entered by user to the one in the database during login
+userSchema.methods.confirmPasswordDuringLogin = async function (
+  enteredPassword,
+  userPassword
+) {
+  return await bcrypt.compare(enteredPassword, userPassword);
+};
 
 const Users = mongoose.model("users", userSchema);
 

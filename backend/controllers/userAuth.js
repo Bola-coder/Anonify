@@ -55,6 +55,7 @@ const login = catchAsync(async (req, res, next) => {
   });
 });
 
+// Protect route from unauthorised users function
 const protectRoute = catchAsync(async (req, res, next) => {
   let token;
 
@@ -77,11 +78,9 @@ const protectRoute = catchAsync(async (req, res, next) => {
 
   // Verifying token
   const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
-  console.log(decoded);
 
   // Checking if user still exists
   const id = decoded.id;
-
   const currentUser = await User.findById(id);
   if (!currentUser) {
     return next(

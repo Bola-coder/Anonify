@@ -1,7 +1,11 @@
 const mongoose = require("mongoose");
 
 const messageSchema = mongoose.Schema({
-  //   userId: String,
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: "User",
+  },
   messageContent: {
     type: String,
     required: [true, "You should provide a message content "],

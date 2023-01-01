@@ -1,9 +1,10 @@
 const Messages = require("./../models/messageModel");
 const catchAsync = require("./../util/catchAsync");
 const AppError = require("./../util/AppError");
+
 // Get All User messages {private}
 const getAllMessages = catchAsync(async (req, res, next) => {
-  const messages = await Messages.find();
+  const messages = await Messages.find({ userId: req.user.id });
   res.status(200).json({
     status: "Success",
     data: messages,

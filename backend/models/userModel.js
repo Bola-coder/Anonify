@@ -48,6 +48,20 @@ userSchema.methods.confirmPasswordDuringLogin = async function (
   return await bcrypt.compare(enteredPassword, userPassword);
 };
 
+// Creating an instance method to check if the password has been changed after token has been issued
+userSchema.methods.passwordChangedAfterTokenIssued = async function (
+  JWTTimestamp
+) {
+  if (this.passwordChangedAt) {
+    const changedTimestamp = parseInt(
+      this.passwordChangedAt.getTime() / 100,
+      10
+    );
+    return JWTTimestamp < changedTimestamp;
+  }
+  return false;
+};
+
 const Users = mongoose.model("users", userSchema);
 
 module.exports = Users;

@@ -6,16 +6,16 @@ import SecureKey from "./../../public/images/key.png";
 import styles from "./../../styles/auth.module.css";
 
 const Signup = () => {
-  const { signup, user } = useAuth();
+  const { signup, token } = useAuth();
 
   const [form, setForm] = useState({
-    name: "",
+    username: "",
     email: "",
     password: "",
     passwordConfirm: "",
   });
 
-  const { name, email, password, passwordConfirm } = form;
+  const { username, email, password, passwordConfirm } = form;
 
   const handleFormInputChange = (e) => {
     const { name, value } = e.target;
@@ -27,22 +27,16 @@ const Signup = () => {
 
   const handleSignup = (e) => {
     e.preventDefault();
-    if (!name || !email || !password || !passwordConfirm) {
+    if (!username || !email || !password || !passwordConfirm) {
       alert("Missing fields. Please fill in all fields before you submit.");
     } else if (password !== passwordConfirm) {
       alert("Password do not match");
     } else {
       console.log(form, "submitted successfully");
-      signup(email, password)
-        .then(() => {
-          alert("user Signed up sucessully");
-          console.log(user);
-        })
-        .catch((err) => {
-          console.log("An error occurred", err);
-        });
+      signup(username, email, password);
+      console.log("User's token is", token);
       setForm({
-        name: "",
+        username: "",
         email: "",
         password: "",
         passwordConfirm: "",
@@ -63,8 +57,8 @@ const Signup = () => {
               <label htmlFor="name">Name</label>
               <input
                 type="text"
-                name="name"
-                value={name}
+                name="username"
+                value={username}
                 onChange={handleFormInputChange}
               />
             </div>

@@ -7,7 +7,7 @@ import SecureKey from "./../../public/images/key.png";
 import styles from "./../../styles/auth.module.css";
 
 const Login = () => {
-  const { login, user } = useAuth();
+  const { login, token } = useAuth();
   const router = useRouter();
 
   const [form, setForm] = useState({
@@ -31,15 +31,8 @@ const Login = () => {
       alert("Missing fields. Please fill in all fields before you submit.");
     } else {
       console.log(form, "submitted successfully");
-      login(email, password)
-        .then(() => {
-          alert("user logged in sucessully");
-          console.log(user);
-          router.push("/dashboard");
-        })
-        .catch((err) => {
-          console.log("An error occurred", err);
-        });
+      login(email, password);
+      console.log("Token during login", token);
       setForm({
         email: "",
         password: "",

@@ -1,10 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
-import { auth } from "./../Utilities/firebase";
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-} from "firebase/auth";
+import { useRouter } from "next/router";
+import UseToken from "../hooks/useToken";
 
 const AuthContext = createContext();
 
@@ -14,28 +10,59 @@ export const useAuth = () => {
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const { token, setToken } = UseToken();
+  const router = useRouter();
 
-  useEffect(() => {
-    const unsuscribe = auth.onAuthStateChanged((user) => {
-      setUser(user);
-      console.log(user);
+  // Signup function
+  const signup = (username, email, password) => {
+    const content = JSON.stringify({
+      username,
+      email,
+      password,
     });
 
-    return () => unsuscribe;
-  }, []);
-
-  const signup = (email, password) => {
-    return createUserWithEmailAndPassword(auth, email, password);
+    fetch("http://localhost:5000/user/signup", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: content,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setToken(data.token);
+      })
+      .catch((err) => console.log("An Error occured during signup", err));
   };
 
+  // Login function
   const login = (email, password) => {
-    return signInWithEmailAndPassword(auth, email, password);
+    const credentials = JSON.stringify({
+      email,
+      password,
+    });
+    fetch("http://localhost:5000/user/login", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: credentials,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("Logged in ", data);
+        setToken(data.token);
+      })
+      .catch((err) => console.log("An error occured during login", err));
   };
 
   const values = {
-    user,
     signup,
     login,
+    token,
   };
 
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;

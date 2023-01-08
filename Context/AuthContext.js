@@ -32,6 +32,7 @@ export const AuthProvider = ({ children }) => {
       .then((res) => res.json())
       .then((data) => {
         setUser(data.user);
+        localStorage.setItem("user", JSON.stringify(data.user));
         if (data.token) {
           setToken(data.token);
           router.push("/dashboard");
@@ -60,6 +61,7 @@ export const AuthProvider = ({ children }) => {
       .then((data) => {
         console.log(data);
         setUser(data);
+        localStorage.setItem("user", JSON.stringify(data));
         if (data.token) {
           setToken(data.token);
           router.push("/dashboard");

@@ -53,6 +53,7 @@ const login = catchAsync(async (req, res, next) => {
     status: "success",
     token,
     email: user.email,
+    username: user.username,
   });
 });
 

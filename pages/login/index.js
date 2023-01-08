@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { useAuth } from "./../../Context/AuthContext";
 import SecureKey from "./../../public/images/key.png";
 import styles from "./../../styles/auth.module.css";
 
 const Login = () => {
-  const { login, token } = useAuth();
-  const router = useRouter();
+  const { login } = useAuth();
 
   const [form, setForm] = useState({
     email: "",
@@ -30,9 +28,8 @@ const Login = () => {
     if (!email || !password) {
       alert("Missing fields. Please fill in all fields before you submit.");
     } else {
-      console.log(form, "submitted successfully");
+      console.log(form, "submitted  successful ly");
       login(email, password);
-      console.log("Token during login", token);
       setForm({
         email: "",
         password: "",

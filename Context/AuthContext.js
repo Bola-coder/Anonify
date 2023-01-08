@@ -31,8 +31,13 @@ export const AuthProvider = ({ children }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        setToken(data.token);
+        setUser(data.user);
+        if (data.token) {
+          setToken(data.token);
+          router.push("/dashboard");
+        } else {
+          router.push("/");
+        }
       })
       .catch((err) => console.log("An Error occured during signup", err));
   };
@@ -53,16 +58,30 @@ export const AuthProvider = ({ children }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log("Logged in ", data);
-        setToken(data.token);
+        console.log(data);
+        setUser(data);
+        if (data.token) {
+          setToken(data.token);
+          router.push("/dashboard");
+        } else {
+          router.push("/");
+        }
       })
       .catch((err) => console.log("An error occured during login", err));
   };
 
+  const checkAuthStatus = () => {
+    if (token) {
+      return true;
+    }
+    return false;
+  };
   const values = {
     signup,
     login,
     token,
+    user,
+    checkAuthStatus,
   };
 
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;

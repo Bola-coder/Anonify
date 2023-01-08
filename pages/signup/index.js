@@ -32,9 +32,7 @@ const Signup = () => {
     } else if (password !== passwordConfirm) {
       alert("Password do not match");
     } else {
-      console.log(form, "submitted successfully");
       signup(username, email, password);
-      console.log("User's token is", token);
       setForm({
         username: "",
         email: "",

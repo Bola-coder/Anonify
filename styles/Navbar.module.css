@@ -1,0 +1,28 @@
+.nav{
+    /* background-color: rgb(30, 17, 17); */
+    background-color: rgb(144, 8, 144);
+    padding: 20px;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 10vh;
+}
+
+.nav h2{
+    flex-basis: 60%;
+    cursor: pointer;
+}
+
+.menu {
+    flex-basis: 30%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.menu p{
+    font-weight: bold;
+    cursor: pointer;
+}

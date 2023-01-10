@@ -4,7 +4,9 @@ const AppError = require("./../util/AppError");
 
 // Get All User messages {private}
 const getAllMessages = catchAsync(async (req, res, next) => {
-  const messages = await Messages.find({ userId: req.user.id });
+  const messages = await Messages.find({ userId: req.user.id }).sort(
+    "-timeSent"
+  );
   res.status(200).json({
     status: "Success",
     data: messages,

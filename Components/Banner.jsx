@@ -8,6 +8,9 @@ const Banner = () => {
     <section className={styles.banner}>
       <div className={styles.header}>
         <p>Anonify</p>
+        <Link href="/dashboard">        
+        <p>Dashboard</p>
+        </Link>
       </div>
       <div className={styles.content}>
         <div className={styles.banner__text}>

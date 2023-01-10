@@ -9,11 +9,13 @@
 
 .header{
     padding: 10px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .header p {
     font-family: 'Oswald', sans-serif;
-    font-size: 2rem;
+    font-size: 1.7rem;
     cursor: pointer;
     letter-spacing: 1px;
 }

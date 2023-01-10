@@ -12,7 +12,7 @@ const messageSchema = mongoose.Schema({
   },
   timeSent: {
     type: Date,
-    default: Date.now(),
+    default: Date.now,
   },
 });
 

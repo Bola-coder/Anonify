@@ -8,8 +8,8 @@ const Banner = () => {
     <section className={styles.banner}>
       <div className={styles.header}>
         <p>Anonify</p>
-        <Link href="/dashboard">        
-        <p>Dashboard</p>
+        <Link href="/profile">        
+        <p>Profile</p>
         </Link>
       </div>
       <div className={styles.content}>
@@ -28,7 +28,7 @@ const Banner = () => {
           <Image
             src="/images/secure.png"
             alt="Secure Key"
-            width={300}
+            width={290}
             height={500}
           />
         </div>

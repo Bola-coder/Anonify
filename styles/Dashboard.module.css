@@ -10,8 +10,7 @@
     text-align: center;
     /* color: #fff; */
     /* color: #222; */
-    color: rgb(144, 8, 144);
-    padding-top: 2%;
+    color: var(--bg_main);
 }
 
 /* .contents{
@@ -45,7 +44,7 @@
     margin: 0 auto;
     margin-top: 30px;
     padding: 20px;
-    border: 2px solid rgb(144, 8, 144);
+    border: 2px solid var(--bg_main);
     border-radius: 6px;
 }
 
@@ -61,8 +60,8 @@
   padding: 10px 12px;
   margin-top: 10px;
   border: none;
-  border-radius: 4px;
-  background-color: rgb(144, 8, 144);
+  border-radius: 20px;
+  background-color: var(--bg_main);
   color: #fff;
   font-size: 1.1rem;
   cursor: pointer;

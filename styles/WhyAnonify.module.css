@@ -30,7 +30,7 @@
 
 .whyus__icon{
     font-size: 3rem;
-    color:  rgb(144, 8, 144);
+    color: var(--bg_main);
     padding: 20px;
 }
 

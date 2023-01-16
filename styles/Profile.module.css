@@ -1,0 +1,83 @@
+.profile{
+    padding: 20px;
+    width: 100vw;
+}
+
+.profileContent{
+    width: 80%;
+    padding: 2%;
+    margin: 0 auto;
+    /* text-align: center; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.profileContent h3{
+    font-size: 2rem;
+    /* letter-spacing: 2px; */
+}
+
+.profileContent img{
+    margin-top: 2%;
+}
+
+.profile__link{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 2%;
+    cursor: pointer;
+}
+
+.profile__link p{
+    font-weight: bold;
+    padding: 10px;
+    border: 1px solid var(--bg_main);
+    border-radius: 12px;
+}
+
+.profile__link svg{
+    margin-left: 20px;
+    font-size: 1.7rem;
+}
+ 
+ .btns{
+    margin-top: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+ .btns button{
+    padding: 10px 12px;
+    width: 300px;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 5%;
+    border: 0;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.btns button:first-child{
+    border: 2px solid var(--bg_main);
+    background-color: var(--bg_main);
+    color: #fff;
+}
+.btns button:nth-child(2){
+    border: 2px solid var(--bg_main);
+    color: var(--bg_main);
+}
+
+.btns button:first-child:hover{
+    color: var(--bg_main);
+    background-color: var(--color_main);
+}
+
+.btns button:nth-child(2):hover{
+    background-color: var(--bg_main);
+    color: #fff;
+}

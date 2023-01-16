@@ -1,6 +1,5 @@
 .nav{
-    /* background-color: rgb(30, 17, 17); */
-    background-color: rgb(144, 8, 144);
+    background-color: var(--bg_main);
     padding: 20px;
     color: #fff;
     display: flex;
@@ -15,7 +14,7 @@
 }
 
 .menu {
-    flex-basis: 30%;
+    flex-basis: 15%;
     display: flex;
     justify-content: space-between;
     align-items: center;

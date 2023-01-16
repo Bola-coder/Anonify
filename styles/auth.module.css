@@ -14,7 +14,7 @@
 .auth__image{
     flex: 1.2;
     height: 100%;
-    background-color: rgb(144, 8, 144);
+    background-color: var(--bg_main);
     border-radius: 4px;
 }
 
@@ -40,7 +40,8 @@
 }
 .auth__form h3{
     font-size: 1.5rem;
-    color: rgb(144, 8, 144);
+    /* color: rgb(144, 8, 144); */
+    color: var(--bg_main);
     margin-top: 10px;
 }
 
@@ -82,7 +83,8 @@
     padding: 10px;
     border: 0;
     border-radius: 15px;
-    background-color: rgb(144, 8, 144);
+    background-color: var(--bg_main);
+
     color: #fff;
     width: 50%;
     margin-top: 10px;
@@ -97,6 +99,7 @@
 }
 
 .auth__content .auth__footer span{
-    color: rgb(144, 8, 144);
+    /* color: rgb(144, 8, 144); */
+    color: rgb(30, 17, 17);
     cursor: pointer;
 }

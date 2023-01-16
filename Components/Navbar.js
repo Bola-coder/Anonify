@@ -4,7 +4,7 @@ import { useAuth } from "../Context/AuthContext";
 import styles from "./../styles/Navbar.module.css";
 
 const Navbar = () => {
-  const { token, user } = useAuth();
+  const { logout, token, user } = useAuth();
   return (
     <nav className={styles.nav}>
       <Link href="/">
@@ -13,19 +13,16 @@ const Navbar = () => {
       {token ? (
         <div className={styles.menu}>
           <p>{user?.username}</p>
-          <p>Dashboard</p>
-          <p>Logout</p>
+          {/* <p>Dashboard</p> */}
+          <p onClick={logout}>Logout</p>
         </div>
       ) : (
         <div className={styles.menu}>
-          <Link href="/">
-            <p>Home</p>
+          <Link href="/signup">
+            <p>Register</p>
           </Link>
           <Link href="/login">
             <p>Login</p>
-          </Link>
-          <Link href="/signup">
-            <p>Register</p>
           </Link>
         </div>
       )}

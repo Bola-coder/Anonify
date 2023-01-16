@@ -7,6 +7,10 @@ html,
 body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    --bg_main: rgb(33, 24, 24);
+    --color_main: #ffffff;
+        /* color:  rgb(144, 8, 144); */
+
 }
 
 a {

@@ -13,6 +13,12 @@ export const AuthProvider = ({ children }) => {
   const { token, setToken } = UseToken();
   const router = useRouter();
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setUser(JSON.parse(localStorage.getItem("user")));
+    }
+  }, []);
+
   // Signup function
   const signup = (username, email, password) => {
     const content = JSON.stringify({
@@ -35,7 +41,7 @@ export const AuthProvider = ({ children }) => {
         localStorage.setItem("user", JSON.stringify(data.user));
         if (data.token) {
           setToken(data.token);
-          router.push("/dashboard");
+          router.push("/profile");
         } else {
           router.push("/");
         }
@@ -64,12 +70,22 @@ export const AuthProvider = ({ children }) => {
         localStorage.setItem("user", JSON.stringify(data));
         if (data.token) {
           setToken(data.token);
-          router.push("/dashboard");
+          router.push("/profile");
         } else {
           router.push("/");
         }
       })
       .catch((err) => console.log("An error occured during login", err));
+  };
+
+  const logout = () => {
+    if (typeof window !== "undefined") {
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+    }
+    setToken(null);
+    alert("Logout successful");
+    router.push("/");
   };
 
   const checkAuthStatus = () => {
@@ -78,9 +94,11 @@ export const AuthProvider = ({ children }) => {
     }
     return false;
   };
+
   const values = {
     signup,
     login,
+    logout,
     token,
     user,
     checkAuthStatus,

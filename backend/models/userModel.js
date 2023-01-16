@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
+const slugify = require("slugify");
 const userSchema = mongoose.Schema({
   username: {
     type: String,
@@ -23,6 +24,9 @@ const userSchema = mongoose.Schema({
   passwordChangedAt: {
     type: Date,
   },
+  slug: {
+    type: String,
+  },
 });
 
 // A database middleware to hash the password before saving to the database;
@@ -38,6 +42,12 @@ userSchema.pre("save", async function (next) {
     return next();
   }
   this.passwordChangedAt = Date.now - 2000;
+});
+
+// Creating a pre save hook for creating slugs for each user based on their username
+userSchema.pre("save", function (next) {
+  this.slug = slugify(this.username, { lower: true });
+  next();
 });
 
 // Creating an instance method to compare password entered by user to the one in the database during login

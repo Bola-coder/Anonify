@@ -4,6 +4,7 @@ const User = require("./../models/userModel");
 const catchAsync = require("./../util/catchAsync");
 const AppError = require("./../util/AppError");
 const Users = require("./../models/userModel");
+const { default: next } = require("next");
 
 const signJWTToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -105,4 +106,20 @@ const protectRoute = catchAsync(async (req, res, next) => {
   next();
 });
 
-module.exports = { signup, login, protectRoute };
+// Creating a controller to get the user  by slug
+
+const getUserBySlug = catchAsync(async (req, res, next) => {
+  const slug = req.params.slug;
+  const user = await User.find({ slug }).select("+_id");
+
+  if (!user) {
+    return next(new AppError("User not found!!!", 404));
+  }
+
+  res.status(200).json({
+    status: "success",
+    user,
+  });
+});
+
+module.exports = { signup, login, protectRoute, getUserBySlug };

@@ -5,11 +5,13 @@ import { FaClipboardList } from "react-icons/fa";
 import { useAuth } from "../../Context/AuthContext";
 import Navbar from "../../Components/Navbar";
 import styles from "./../../styles/Profile.module.css";
+import { useRouter } from "next/router";
 
 const Profile = () => {
   const { user } = useAuth();
   const [link, setLink] = useState(null);
   const [showLink, setShowLink] = useState(false);
+  const router = useRouter();
 
   const generateAnonLink = () => {
     console.log("Genarating Anonify link");
@@ -28,6 +30,11 @@ const Profile = () => {
       .catch((err) => {
         console.log("An error occured when copying text. Please try again");
       });
+  };
+
+  //Navigate to Dashboard page
+  const goToDashboard = () => {
+    router.push("/dashboard");
   };
 
   return (
@@ -54,7 +61,7 @@ const Profile = () => {
             <button onClick={generateAnonLink}>
               Get your unique Anonify link.{" "}
             </button>
-            <button>View your messages</button>
+            <button onClick={goToDashboard}>View your messages</button>
           </div>
         </div>
       </section>

@@ -9,7 +9,9 @@ const Dashboard = () => {
   const router = useRouter();
   const [currentUser, setCurrentUser] = useState(null);
   const [messages, setMessages] = useState(null);
-  const messageURI = "http://localhost:5000/messages";
+  // const apiLink = process.env.REACT_APP_ANONIFY_API;
+  const apiLink = "http://localhost:5000";
+  const messageURI = `${apiLink}/messages/`;
 
   // UseEffect to get token and user
   useLayoutEffect(() => {

@@ -19,6 +19,9 @@ export const AuthProvider = ({ children }) => {
     }
   }, []);
 
+  // const apiLink = process.env.REACT_APP_ANONIFY_API;
+  const apiLink = "http://localhost:5000";
+
   // Signup function
   const signup = (username, email, password) => {
     const content = JSON.stringify({
@@ -27,7 +30,7 @@ export const AuthProvider = ({ children }) => {
       password,
     });
 
-    fetch("http://localhost:5000/user/signup", {
+    fetch(`${apiLink}/user/signup`, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -55,7 +58,7 @@ export const AuthProvider = ({ children }) => {
       email,
       password,
     });
-    fetch("http://localhost:5000/user/login", {
+    fetch(`${apiLink}/user/login`, {
       method: "POST",
       headers: {
         Accept: "application/json",

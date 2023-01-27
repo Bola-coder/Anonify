@@ -27,10 +27,10 @@ const CreateNewMessage = () => {
       .catch((err) => console.log(err));
   };
 
-  const handleMessageSubmit = () => {
+  const handleMessageSubmit = (e) => {
+    e.preventDefault();
     getUserFromSlug();
     console.log(recipient);
-    console.log("helo");
     if (recipient) {
       const content = JSON.stringify({
         userId: recipient[0]?._id,
@@ -58,15 +58,14 @@ const CreateNewMessage = () => {
         <h2>Send an anonymous message to {name}.</h2>
         <p>They wont know you sent it.</p>
         <form className={styles.createMessage__form}>
-          <input
+          <textarea
             type="text"
             name="message"
+            autoFocus={true}
             value={message}
             onChange={(e) => setMessage(e.target.value)}
           />
-          <button type="submit" onClick={handleMessageSubmit}>
-            Submit Message
-          </button>
+          <button onClick={handleMessageSubmit}>Send Message</button>
         </form>
       </section>
     </>

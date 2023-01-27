@@ -9,5 +9,50 @@
 
 .createMessage h2{
     font-size: 2rem;
-    color: var(--text_color);
+    color: var(--bg_main);
+}
+
+.createMessage p{
+    font-size: 1.3rem;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.createMessage__form {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 100%;
+    margin-top: 4%;
+}
+
+.createMessage__form textarea, .createMessage__form button{
+    width: 60%;
+    margin: 0 auto;
+}
+
+.createMessage__form textarea{
+    padding: 20px;
+    height: 200px;
+    resize: none;
+    font-size: 1.3rem;
+    background-color: var(--bg_main);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+}
+
+.createMessage__form textarea:focus{
+    outline: none;
+}
+
+.createMessage__form button{
+    margin-top: 2%;
+    padding: 12px 15px;
+    background-color: var(--color_main);
+    color: var(--bg_main);
+    border: 2px solid var(--bg_main);
+    border-radius: 4px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer
 }

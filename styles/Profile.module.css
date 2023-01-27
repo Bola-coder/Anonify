@@ -15,7 +15,7 @@
 }
 
 .profileContent h3{
-    font-size: 2rem;
+    font-size: 1.5rem;
     /* letter-spacing: 2px; */
 }
 
@@ -36,11 +36,12 @@
     padding: 10px;
     border: 1px solid var(--bg_main);
     border-radius: 12px;
+    font-size: 1.4rem;
 }
 
-.profile__link svg{
+.profile__link p svg{
     margin-left: 20px;
-    font-size: 1.7rem;
+    font-size: 1.5rem;
 }
  
  .btns{

@@ -12,7 +12,9 @@ const Navbar = () => {
       </Link>
       {token ? (
         <div className={styles.menu}>
-          <p>{user?.username}</p>
+          <Link href="/profile">
+            <p>Profile</p>
+          </Link>
           {/* <p>Dashboard</p> */}
           <p onClick={logout}>Logout</p>
         </div>

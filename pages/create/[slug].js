@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import styles from "./../../styles/CreateMessage.module.css";
+import Navbar from "../../Components/Navbar";
 
 const CreateNewMessage = () => {
   const router = useRouter();
@@ -7,14 +9,10 @@ const CreateNewMessage = () => {
   //   const apiLink = process.env.REACT_APP_ANONIFY_API;
   const apiLink = "http://localhost:5000";
   const link = `${apiLink}/user/me/${slug}`;
-
-  const [recipient, setRecipient] = useState(null);
+  const [recipient, setRecipient] = useState([]);
   const [message, setMessage] = useState("");
-
-  //   useEffect(() => {
-  //     //   Hello
-  //   }, []);
-  //   console.log("recipient", recipient);
+  let name = router.query.slug;
+  name = name?.toUpperCase();
 
   //   function to get the user data based on the slug in url
   const getUserFromSlug = () => {
@@ -28,8 +26,6 @@ const CreateNewMessage = () => {
       })
       .catch((err) => console.log(err));
   };
-  // useEffect(() => {
-  // }, [link]);
 
   const handleMessageSubmit = () => {
     getUserFromSlug();
@@ -57,18 +53,22 @@ const CreateNewMessage = () => {
 
   return (
     <>
-      <h2>Hello welcome to the create message panel</h2>
-
-      <input
-        type="text"
-        name="message"
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-      />
-      <button type="submit" onClick={handleMessageSubmit}>
-        Submit Message
-      </button>
-      <p>{message}</p>
+      <Navbar />
+      <section className={styles.createMessage}>
+        <h2>Send an anonymous message to {name}.</h2>
+        <p>They wont know you sent it.</p>
+        <form className={styles.createMessage__form}>
+          <input
+            type="text"
+            name="message"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+          />
+          <button type="submit" onClick={handleMessageSubmit}>
+            Submit Message
+          </button>
+        </form>
+      </section>
     </>
   );
 };

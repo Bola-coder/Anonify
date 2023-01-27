@@ -2,15 +2,14 @@
     padding: 20px;
     /* background-color: rgb(30, 17, 17); */
     /* background-color: rgb(144, 8, 144); */
-    background-color: #ddd;
+    background-color: rgb(247, 242, 242);
     min-height: 90vh;
 }
 
 .dashboard__header{
     text-align: center;
-    /* color: #fff; */
-    /* color: #222; */
     color: var(--bg_main);
+    font-size: 1.5rem;
 }
 
 /* .contents{

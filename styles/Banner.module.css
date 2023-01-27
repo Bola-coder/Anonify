@@ -32,12 +32,12 @@
 }
 
 .banner__text h1{
-    font-size: 4rem;
+    font-size: 3.8rem;
     width: 80%;
 }
 
 .banner__text p{
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     width: 80%;
     margin-top: 20px;
 }
@@ -51,7 +51,7 @@
     font-size: 2rem;
     /* font-weight: bolder; */
     cursor: pointer;
-    color: rgb(144, 8, 144);
+    color: var(--text_color);
 }
 
 .banner__text button:hover{

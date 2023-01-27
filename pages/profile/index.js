@@ -1,17 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { FaClipboardList } from "react-icons/fa";
+import { FaCopy } from "react-icons/fa";
 import { useAuth } from "../../Context/AuthContext";
 import Navbar from "../../Components/Navbar";
 import styles from "./../../styles/Profile.module.css";
 import { useRouter } from "next/router";
 
 const Profile = () => {
-  const { user } = useAuth();
+  const { user, checkAuthStatus } = useAuth();
   const [link, setLink] = useState(null);
   const [showLink, setShowLink] = useState(false);
   const router = useRouter();
+
+  useEffect(() => {
+    checkAuthStatus() ? "" : router.push("/denied");
+  });
 
   const generateAnonLink = () => {
     console.log("Genarating Anonify link");
@@ -51,8 +55,9 @@ const Profile = () => {
           />
           {showLink ? (
             <div className={styles.profile__link}>
-              <p onClick={() => copyAnonLinkToClipboard(link)}>{link} </p>
-              <FaClipboardList onClick={() => copyAnonLinkToClipboard(link)} />
+              <p>
+                {link} <FaCopy onClick={() => copyAnonLinkToClipboard(link)} />
+              </p>
             </div>
           ) : (
             ""

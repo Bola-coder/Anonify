@@ -86,9 +86,9 @@ export const AuthProvider = ({ children }) => {
       localStorage.removeItem("token");
       localStorage.removeItem("user");
     }
-    setToken(null);
     alert("Logout successful");
     router.push("/");
+    setToken(null);
   };
 
   const checkAuthStatus = () => {

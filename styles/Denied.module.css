@@ -1,0 +1,28 @@
+.denied{
+    padding: 20px;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.denied h2 {
+    font-size: 2.5rem;
+    margin-top: 10%;
+    width: 80%;
+    color: var(--bg_main);
+}
+
+.denied button{
+    padding: 10px 12px;
+    margin-top: 3%;
+    font-size: 1.3rem;
+    font-weight: bold;
+    background-color: var(--bg_main);
+    color: var(--color_main);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.denied button:hover{
+    opacity: 0.9;
+}

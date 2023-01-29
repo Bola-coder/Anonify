@@ -126,12 +126,13 @@
 @media screen and (max-width: 425px) {
     .banner{
         padding: 18px;
+        height: 90vh;
     }
     .header{
         margin-top: 2%;
     }
     .content{
-        /* margin-top: 25%; */
+        margin-top: 15%;
         width: 100%;
     }
 
@@ -140,33 +141,37 @@
     }
 
     .banner__text h1{
-        font-size: 2.7rem;
+        font-size: 3.5rem;
     }
 
     .banner__text p{
         width: 90%;
+        font-size: 1.2rem;
     }
 
     .banner__text button{
-        font-size: 1.5rem;
+        font-size: 2rem;
         margin-top: 8%;
     }
 }
 
-
-@media screen and (max-width: 320) {
-
-    .banner__text{
-        width: 100%;
+@media screen and (max-width: 375px) {
+   
+    .banner__text h1{
+        font-size: 3rem;
     }
+    
+    .banner__text p{
+        width: 90%;
+        font-size: 1rem;
+    }
+}
 
+@media screen and (max-width: 320px) {
     .banner__text h1{
         font-size: 2.5rem;
     }
 
-    .banner__text p{
-        width: 90%;
-    }
 
     .banner__text button{
         font-size: 1.2rem;

@@ -63,9 +63,7 @@
         font-size: 1.7rem;
     }
 
-    .whyus__container{
-        /* Nothing */
-    }
+   
 
     .whyus__content{
         width: 25%;
@@ -136,6 +134,7 @@
     .whyus h2{
         font-size: 1.3rem;
     }
+
 
     .whyus__content{
         width: 85%;

@@ -45,7 +45,7 @@
 .banner__text button{
     padding: 12px 20px;
     border: none;
-    border-radius: 6px;
+    border-radius: 4px;
     margin-top: 4%;
     font-family: 'Oswald', sans-serif;
     font-size: 2rem;
@@ -60,4 +60,115 @@
 
 .banner__image{
     flex-basis: 30%;
+}
+
+@media screen and (max-width: 1024px){
+    .banner{
+        padding: 20px;
+    }
+
+    .header p{
+        font-size: 1.5rem;
+    }
+
+    .content{
+        margin-top: 3%;
+    }
+
+    .banner__text h1{
+        font-size: 3.4rem;
+    }
+
+    .banner__text p{
+        font-size: 1rem;
+    }
+
+    .banner__text button{
+        padding: 10px 15px;
+        font-size: 1.7rem;
+    }
+
+    .banner__image{
+        flex-basis: 25%;
+    }
+
+    .banner__image img{
+        width: 240px;
+        height: 420px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .content{
+        display: block;
+        margin-top: 10%;
+    }
+
+    .banner__text{
+        width: 90%;
+    }
+
+    .banner__text h1{
+        font-size: 3.6rem;
+    }
+
+    .banner__text button{
+        font-size: 2rem;
+        padding: 10px 20px;
+    }
+    
+
+    .banner__image{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .banner{
+        padding: 18px;
+    }
+    .header{
+        margin-top: 2%;
+    }
+    .content{
+        /* margin-top: 25%; */
+        width: 100%;
+    }
+
+    .banner__text{
+        width: 100%;
+    }
+
+    .banner__text h1{
+        font-size: 2.7rem;
+    }
+
+    .banner__text p{
+        width: 90%;
+    }
+
+    .banner__text button{
+        font-size: 1.5rem;
+        margin-top: 8%;
+    }
+}
+
+
+@media screen and (max-width: 320) {
+
+    .banner__text{
+        width: 100%;
+    }
+
+    .banner__text h1{
+        font-size: 2.5rem;
+    }
+
+    .banner__text p{
+        width: 90%;
+    }
+
+    .banner__text button{
+        font-size: 1.2rem;
+    }
 }

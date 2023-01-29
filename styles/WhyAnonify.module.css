@@ -30,15 +30,16 @@
 
 .whyus__icon{
     font-size: 3rem;
-    color: var(--bg_main);
+    color: var(--text_color);
     padding: 20px;
 }
 
 .whyus__header{
     font-size: 1.6rem;
     padding: 5px;
-    font-weight: light;
-    color: #222;
+    /* font-weight: light; */
+    /* color: #222; */
+    color: var(--text_color);
     margin-bottom: 10px;
 }
 
@@ -47,7 +48,103 @@
     padding: 5px;
     width: 70%;
     font-weight: light;
-    color: rgb(48, 44, 44);
+    /* color: rgb(48, 44, 44); */
+    letter-spacing: 1px;
 
 }
 
+
+@media screen and (max-width: 1024px){
+    .whyus{
+        margin-top: 7%;
+    }
+
+    .whyus h2{
+        font-size: 1.7rem;
+    }
+
+    .whyus__container{
+        /* Nothing */
+    }
+
+    .whyus__content{
+        width: 25%;
+        height: 370px;
+    }
+
+    .whyus__icon{
+        font-size: 2.3rem;
+    }
+
+    .whyus__header{
+        font-size: 1.2rem;
+    }
+
+    .whyus__text{
+        font-size: .8rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .whyus h2{
+        font-size: 1.5rem;
+    }
+
+    .whyus__container{
+        flex-wrap: wrap;
+    }
+
+    .whyus__content{
+        width: 35%;
+        height: 350px;
+        margin-top: 5%;
+    }
+
+    .whyus__icon{
+        font-size: 2rem;
+        padding: 15px;
+    }
+
+    .whyus__text{
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .whyus h2{
+        font-size: 1.3rem;
+    }
+
+
+    .whyus__content{
+        width: 75%;
+        height: 320px;
+        margin-top: 7%;
+    }
+
+    .whyus__icon{
+        font-size: 2rem;
+        padding: 15px;
+    }
+
+    .whyus__text{
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .whyus h2{
+        font-size: 1.3rem;
+    }
+
+    .whyus__content{
+        width: 85%;
+        height: 330px;
+        margin-top: 10%;
+    }
+
+    .whyus__icon{
+        font-size: 1.8rem;
+    }
+
+}

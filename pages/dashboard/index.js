@@ -10,7 +10,7 @@ const Dashboard = () => {
   const [currentUser, setCurrentUser] = useState(null);
   const [messages, setMessages] = useState(null);
   // const apiLink = process.env.REACT_APP_ANONIFY_API;
-  const apiLink = "http://localhost:5000";
+  const apiLink = "https://anonify-backend.onrender.com";
   const messageURI = `${apiLink}/messages/`;
 
   // UseEffect to get token and user

@@ -7,7 +7,7 @@ const CreateNewMessage = () => {
   const router = useRouter();
   const slug = router.query.slug;
   //   const apiLink = process.env.REACT_APP_ANONIFY_API;
-  const apiLink = "http://localhost:5000";
+  const apiLink = "https://anonify-backend.onrender.com";
   const link = `${apiLink}/user/me/${slug}`;
   const [recipient, setRecipient] = useState([]);
   const [message, setMessage] = useState("");

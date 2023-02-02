@@ -20,7 +20,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   // const apiLink = process.env.REACT_APP_ANONIFY_API;
-  const apiLink = "http://localhost:5000";
+  const apiLink = "https://anonify-backend.onrender.com";
 
   // Signup function
   const signup = (username, email, password) => {

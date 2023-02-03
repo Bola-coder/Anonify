@@ -1,59 +1,59 @@
-.dashboard{
-    padding: 20px;
-    /* background-color: rgb(30, 17, 17); */
-    /* background-color: rgb(144, 8, 144); */
-    background-color: rgb(247, 242, 242);
-    min-height: 90vh;
+.dashboard {
+  padding: 20px;
+  /* background-color: rgb(30, 17, 17); */
+  /* background-color: rgb(144, 8, 144); */
+  background-color: rgb(247, 242, 242);
+  min-height: 90vh;
 }
 
-.dashboard__header{
-    text-align: center;
-    color: var(--bg_main);
-    font-size: 1.5rem;
+.dashboard__header {
+  text-align: center;
+  color: var(--bg_main);
+  font-size: 1.5rem;
 }
 
-/* .contents{
-    background-color: #eee;
-    padding: 20px;
-    border-radius: 12px;
-    height: 70vh;
-    width: 80%;
-    margin: 0 auto;
-    margin-top: 2%;
-    overflow-y: scroll;
-    scrollbar-width: thin;
-    scrollbar-color: rgb(188, 179, 179)#f2eded;
+/* .contents {
+  background-color: #eee;
+  padding: 20px;
+  border-radius: 12px;
+  height: 70vh;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 2%;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: rgb(188, 179, 179) #f2eded;
 }
 .contents::-webkit-scrollbar {
-    width: 12px;
-  }
-  .contents::-webkit-scrollbar-track {
-    background:#f2eded;
-  }
-  
-  .contents::-webkit-scrollbar-thumb {
-    background-color: rgb(188, 179, 179);
-    border-radius: 20px;
-    border: 3px solid#f2eded;
-  } */
-
-.content{
-    background-color: #fff;
-    width: 70%;
-    margin: 0 auto;
-    margin-top: 30px;
-    padding: 20px;
-    border: 2px solid var(--bg_main);
-    border-radius: 6px;
+  width: 12px;
+}
+.contents::-webkit-scrollbar-track {
+  background: #f2eded;
 }
 
-.content__button{
+.contents::-webkit-scrollbar-thumb {
+  background-color: rgb(188, 179, 179);
+  border-radius: 20px;
+  border: 3px solid#f2eded;
+} */
+
+.content {
+  background-color: #fff;
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 30px;
+  padding: 20px;
+  border: 2px solid var(--bg_main);
+  border-radius: 6px;
+}
+
+.content__button {
   display: flex;
   flex-direction: column;
   margin-top: 2%;
 }
 
-.content__button button{
+.content__button button {
   width: 40%;
   margin: 0 auto;
   padding: 10px 12px;
@@ -64,4 +64,25 @@
   color: #fff;
   font-size: 1.1rem;
   cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .content {
+    width: 80%;
+  }
+
+  .content__button button {
+    width: 50%;
+    padding: 8px 10px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .content {
+    width: 90%;
+  }
+
+  .content__button button {
+    width: 90%;
+  }
 }

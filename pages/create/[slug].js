@@ -56,7 +56,7 @@ const CreateNewMessage = () => {
       <Navbar />
       <section className={styles.createMessage}>
         <h2>Send an anonymous message to {name}.</h2>
-        <p>They wont know you sent it.</p>
+        <p>They wont know who sent it.</p>
         <form className={styles.createMessage__form}>
           <textarea
             type="text"

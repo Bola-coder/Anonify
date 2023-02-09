@@ -7,7 +7,7 @@ import SecureKey from "./../../public/images/key.png";
 import styles from "./../../styles/auth.module.css";
 
 const Login = () => {
-  const { login } = useAuth();
+  const { login, loading } = useAuth();
 
   const [form, setForm] = useState({
     email: "",
@@ -68,8 +68,12 @@ const Login = () => {
                   onChange={handleFormInputChange}
                 />
               </div>
-              <button className={styles.auth__btn} onClick={handleLogin}>
-                Login
+              <button
+                className={styles.auth__btn}
+                onClick={handleLogin}
+                disabled={loading}
+              >
+                {loading ? "Please wait" : "Login"}
               </button>
             </div>
             <p className={styles.auth__footer}>

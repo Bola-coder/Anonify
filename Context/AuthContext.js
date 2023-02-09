@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
+import axios from "axios";
 import { useRouter } from "next/router";
 import UseToken from "../hooks/useToken";
 
@@ -11,6 +12,8 @@ export const useAuth = () => {
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const { token, setToken } = UseToken();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const router = useRouter();
 
   useEffect(() => {
@@ -29,27 +32,56 @@ export const AuthProvider = ({ children }) => {
       email,
       password,
     });
-
-    fetch(`${apiLink}/user/signup`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: content,
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setUser(data.user);
+    setLoading(true);
+    // fetch(`${apiLink}/user/signup`, {
+    //   method: "POST",
+    //   headers: {
+    //     Accept: "application/json",
+    //     "Content-Type": "application/json",
+    //     "Access-Control-Allow-Origin": "*",
+    //   },
+    //   body: content,
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     setUser(data.user);
+    //     localStorage.setItem("user", JSON.stringify(data.user));
+    //     if (data.token) {
+    //       setToken(data.token);
+    //       router.push("/profile");
+    //       setLoading(false);
+    //     } else {
+    //       router.push("/");
+    //       setLoading(false);
+    //     }
+    //   })
+    //   .catch((err) => {
+    //     console.log("An Error occured during signup", err);
+    //     setLoading(true);
+    //   });
+    axios
+      .post(`${apiLink}/user/signup`, {
+        username,
+        email,
+        password,
+      })
+      .then((response) => {
+        console.log(response.data);
+        const data = response.data;
+        data.user ? setUser(data.user) : "";
         localStorage.setItem("user", JSON.stringify(data.user));
         if (data.token) {
           setToken(data.token);
           router.push("/profile");
+          setLoading(false);
         } else {
           router.push("/");
+          setLoading(false);
         }
       })
-      .catch((err) => console.log("An Error occured during signup", err));
+      .catch((err) => {
+        console.log("An error occured during sign in", err);
+      });
   };
 
   // Login function
@@ -58,6 +90,7 @@ export const AuthProvider = ({ children }) => {
       email,
       password,
     });
+    setLoading(true);
     fetch(`${apiLink}/user/login`, {
       method: "POST",
       headers: {
@@ -69,16 +102,21 @@ export const AuthProvider = ({ children }) => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        setUser(data);
+        data.user ? setUser(data) : "";
         localStorage.setItem("user", JSON.stringify(data));
         if (data.token) {
           setToken(data.token);
           router.push("/profile");
+          setLoading(false);
         } else {
           router.push("/");
+          setLoading(false);
         }
       })
-      .catch((err) => console.log("An error occured during login", err));
+      .catch((err) => {
+        console.log("An error occured during login", err);
+        setLoading(false);
+      });
   };
 
   const logout = () => {
@@ -105,6 +143,7 @@ export const AuthProvider = ({ children }) => {
     token,
     user,
     checkAuthStatus,
+    loading,
   };
 
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;

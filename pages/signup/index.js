@@ -7,7 +7,7 @@ import SecureKey from "./../../public/images/key.png";
 import styles from "./../../styles/auth.module.css";
 
 const Signup = () => {
-  const { signup, token } = useAuth();
+  const { signup, loading } = useAuth();
 
   const [form, setForm] = useState({
     username: "",
@@ -33,6 +33,7 @@ const Signup = () => {
     } else if (password !== passwordConfirm) {
       alert("Password do not match");
     } else {
+      console.log(form, "submitted successfully");
       signup(username, email, password);
       setForm({
         username: "",
@@ -90,8 +91,12 @@ const Signup = () => {
                   onChange={handleFormInputChange}
                 />
               </div>
-              <button className={styles.auth__btn} onClick={handleSignup}>
-                Register
+              <button
+                className={styles.auth__btn}
+                onClick={handleSignup}
+                disabled={loading}
+              >
+                {loading ? "Please wait" : "Register"}
               </button>
             </div>
             <p className={styles.auth__footer}>

@@ -88,6 +88,12 @@
   font-weight: bold;
 }
 
+.auth__btn:disabled {
+  background-color: var(--grey_color);
+  color: var(--bg_main);
+  cursor: not-allowed;
+}
+
 .auth__content .auth__footer {
   margin-top: 5%;
   font-weight: bold;

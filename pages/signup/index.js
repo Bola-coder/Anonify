@@ -7,7 +7,7 @@ import SecureKey from "./../../public/images/key.png";
 import styles from "./../../styles/auth.module.css";
 
 const Signup = () => {
-  const { signup, loading } = useAuth();
+  const { signup, loading, error } = useAuth();
 
   const [form, setForm] = useState({
     username: "",
@@ -26,7 +26,7 @@ const Signup = () => {
     }));
   };
 
-  const handleSignup = (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
     if (!username || !email || !password || !passwordConfirm) {
       alert("Missing fields. Please fill in all fields before you submit.");
@@ -34,13 +34,13 @@ const Signup = () => {
       alert("Password do not match");
     } else {
       console.log(form, "submitted successfully");
-      signup(username, email, password);
-      setForm({
-        username: "",
-        email: "",
-        password: "",
-        passwordConfirm: "",
-      });
+      await signup(username, email, password);
+      // setForm({
+      //   username: "",
+      //   email: "",
+      //   password: "",
+      //   passwordConfirm: "",
+      // });
     }
   };
 
@@ -91,6 +91,7 @@ const Signup = () => {
                   onChange={handleFormInputChange}
                 />
               </div>
+              {error && <p className={styles.auth__error}>{error}</p>}
               <button
                 className={styles.auth__btn}
                 onClick={handleSignup}

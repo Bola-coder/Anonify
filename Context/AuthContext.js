@@ -25,100 +25,66 @@ export const AuthProvider = ({ children }) => {
   // const apiLink = process.env.REACT_APP_ANONIFY_API;
   const apiLink = "https://anonify-backend.onrender.com";
 
-  // Signup function
-  const signup = (username, email, password) => {
-    const content = JSON.stringify({
-      username,
-      email,
-      password,
-    });
-    setLoading(true);
-    // fetch(`${apiLink}/user/signup`, {
-    //   method: "POST",
-    //   headers: {
-    //     Accept: "application/json",
-    //     "Content-Type": "application/json",
-    //     "Access-Control-Allow-Origin": "*",
-    //   },
-    //   body: content,
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     setUser(data.user);
-    //     localStorage.setItem("user", JSON.stringify(data.user));
-    //     if (data.token) {
-    //       setToken(data.token);
-    //       router.push("/profile");
-    //       setLoading(false);
-    //     } else {
-    //       router.push("/");
-    //       setLoading(false);
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     console.log("An Error occured during signup", err);
-    //     setLoading(true);
-    //   });
+  // Function to fetch the data;
+  const fetchData = (url, details) => {
     axios
-      .post(`${apiLink}/user/signup`, {
-        username,
-        email,
-        password,
-      })
+      .post(`${apiLink}${url}`, details)
       .then((response) => {
         console.log(response.data);
         const data = response.data;
-        data.user ? setUser(data.user) : "";
-        localStorage.setItem("user", JSON.stringify(data.user));
-        if (data.token) {
-          setToken(data.token);
-          router.push("/profile");
-          setLoading(false);
+        if (response.data.status == "success") {
+          data.user ? setUser(data.user) : "";
+          localStorage.setItem("user", JSON.stringify(data.user));
+          if (data.token) {
+            setToken(data.token);
+            router.push("/profile");
+            setLoading(false);
+          } else {
+            router.push("/");
+            setLoading(false);
+          }
         } else {
-          router.push("/");
-          setLoading(false);
+          setError(response.data.message);
         }
       })
       .catch((err) => {
-        console.log("An error occured during sign in", err);
-      });
-  };
-
-  // Login function
-  const login = (email, password) => {
-    const credentials = JSON.stringify({
-      email,
-      password,
-    });
-    setLoading(true);
-    fetch(`${apiLink}/user/login`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: credentials,
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        data.user ? setUser(data) : "";
-        localStorage.setItem("user", JSON.stringify(data));
-        if (data.token) {
-          setToken(data.token);
-          router.push("/profile");
-          setLoading(false);
+        let tempError = err.response.data;
+        if (tempError.status === "fail") {
+          // console.log("Fail error", tempError.message);
+          setError(tempError.message);
+        } else if (tempError.status === "error") {
+          // console.log("Error err", tempError.message);
+          setError(tempError.message);
         } else {
-          router.push("/");
-          setLoading(false);
+          // console.log(err.message);
+          setError(err.message);
         }
-      })
-      .catch((err) => {
-        console.log("An error occured during login", err);
         setLoading(false);
       });
   };
 
+  // Signup function
+  const signup = (username, email, password) => {
+    const credentials = {
+      username,
+      email,
+      password,
+    };
+    setLoading(true);
+    fetchData("/user/signup", credentials);
+  };
+
+  // Login function
+  const login = (email, password) => {
+    const credentials = {
+      email,
+      password,
+    };
+    setLoading(true);
+    fetchData("/user/login", credentials);
+  };
+
+  // Logout function
   const logout = () => {
     if (typeof window !== "undefined") {
       localStorage.removeItem("token");
@@ -129,6 +95,7 @@ export const AuthProvider = ({ children }) => {
     setToken(null);
   };
 
+  // Check auth status
   const checkAuthStatus = () => {
     if (token) {
       return true;
@@ -144,6 +111,7 @@ export const AuthProvider = ({ children }) => {
     user,
     checkAuthStatus,
     loading,
+    error,
   };
 
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;

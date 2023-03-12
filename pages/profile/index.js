@@ -19,7 +19,7 @@ const Profile = () => {
 
   const generateAnonLink = () => {
     console.log("Genarating Anonify link");
-    const genLink = `https://anonify.netlify.app/create/${user?.slug}`;
+    const genLink = `https://anonify.netlify.app/create/${user.slug}`;
     setLink(genLink);
     setShowLink((prev) => !prev);
   };

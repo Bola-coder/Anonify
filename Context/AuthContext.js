@@ -71,6 +71,7 @@ export const AuthProvider = ({ children }) => {
       password,
     };
     setLoading(true);
+    setError("");
     fetchData("/user/signup", credentials);
   };
 
@@ -81,6 +82,7 @@ export const AuthProvider = ({ children }) => {
       password,
     };
     setLoading(true);
+    setError("");
     fetchData("/user/login", credentials);
   };
 

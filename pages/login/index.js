@@ -7,7 +7,7 @@ import SecureKey from "./../../public/images/key.png";
 import styles from "./../../styles/auth.module.css";
 
 const Login = () => {
-  const { login, loading } = useAuth();
+  const { login, loading, error } = useAuth();
 
   const [form, setForm] = useState({
     email: "",
@@ -31,10 +31,10 @@ const Login = () => {
     } else {
       console.log(form, "submitted  successful ly");
       login(email, password);
-      setForm({
-        email: "",
-        password: "",
-      });
+      // setForm({
+      //   email: "",
+      //   password: "",
+      // });
     }
   };
 
@@ -68,6 +68,7 @@ const Login = () => {
                   onChange={handleFormInputChange}
                 />
               </div>
+              {error && <p className={styles.auth__error}>{error}</p>}
               <button
                 className={styles.auth__btn}
                 onClick={handleLogin}

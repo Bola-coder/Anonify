@@ -32,7 +32,8 @@ export const AuthProvider = ({ children }) => {
       .then((response) => {
         console.log(response.data);
         const data = response.data;
-        if (response.data.status == "success") {
+        console.log(data);
+        if (data.status === "success") {
           data.user ? setUser(data.user) : "";
           localStorage.setItem("user", JSON.stringify(data.user));
           if (data.token) {
@@ -111,6 +112,7 @@ export const AuthProvider = ({ children }) => {
     logout,
     token,
     user,
+    setUser,
     checkAuthStatus,
     loading,
     error,

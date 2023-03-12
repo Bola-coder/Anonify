@@ -8,7 +8,7 @@ import styles from "./../../styles/Profile.module.css";
 import { useRouter } from "next/router";
 
 const Profile = () => {
-  const { user, checkAuthStatus } = useAuth();
+  const { user, setUser, checkAuthStatus } = useAuth();
   const [link, setLink] = useState(null);
   const [showLink, setShowLink] = useState(false);
   const router = useRouter();
@@ -16,6 +16,13 @@ const Profile = () => {
   useEffect(() => {
     checkAuthStatus() ? "" : router.push("/denied");
   });
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const userString = window.localStorage.getItem("user");
+      setUser(JSON.parse(userString));
+    }
+  }, [setUser]);
 
   const generateAnonLink = () => {
     console.log("Genarating Anonify link");

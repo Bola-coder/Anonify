@@ -1,8 +1,11 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
 import { useAuth } from "../../Context/AuthContext";
 import Navbar from "../../Components/Navbar";
 import styles from "./../../styles/Dashboard.module.css";
+
+const DynamicNavbar = dynamic(() => import("../../Components/Navbar"));
 
 const Dashboard = () => {
   const { user, checkAuthStatus, token } = useAuth();
@@ -14,13 +17,12 @@ const Dashboard = () => {
   const messageURI = `${apiLink}/messages/`;
 
   // UseEffect to get token and user
-  useLayoutEffect(() => {
+  useEffect(() => {
     checkAuthStatus() ? "" : router.push("/");
-    if (typeof window !== "undefined") {
-      setCurrentUser(JSON.parse(localStorage.getItem("user")));
-    }
+    // if (typeof window !== "undefined") {
+    setCurrentUser(JSON.parse(localStorage.getItem("user")));
+    // }
   }, [checkAuthStatus, router]);
-  console.log(user);
 
   // Function to get currently logged in user's message
   const getCurrentUserMessages = () => {
@@ -47,7 +49,7 @@ const Dashboard = () => {
   return (
     <>
       {" "}
-      <Navbar />
+      <DynamicNavbar />
       <section className={styles.dashboard}>
         <h2 className={styles.dashboard__header}>
           {" "}

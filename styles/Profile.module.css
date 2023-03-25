@@ -25,7 +25,8 @@
 
 .profile__link {
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   margin-top: 2%;
   cursor: pointer;
@@ -36,16 +37,17 @@
   padding: 10px;
   border: 1px solid var(--bg_main);
   border-radius: 12px;
-  font-size: 1.4rem;
+  font-size: 0.8rem;
+  margin-bottom: 3%;
 }
 
 .profile__link p svg {
   margin-left: 20px;
-  font-size: 1.5rem;
+  font-size: 1.1rem;
 }
 
 .btns {
-  margin-top: 2%;
+  /* margin-top: 2%; */
   display: flex;
   flex-direction: column;
   justify-content: center;

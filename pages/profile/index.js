@@ -57,13 +57,18 @@ const Profile = () => {
           <Image
             src="/images/secureKey.png"
             alt="Profile image"
-            width={300}
-            height={300}
+            width={260}
+            height={260}
           />
           {showLink ? (
             <div className={styles.profile__link}>
               <p>
-                {link} <FaCopy onClick={() => copyAnonLinkToClipboard(link)} />
+                Hi guys!!!, Send me an anonymous message using Anonify. <br />{" "}
+                Click on my link below to send me an anonymous message <br />
+                {link}
+              </p>
+              <p onClick={() => copyAnonLinkToClipboard(link)}>
+                Copy anonymous link <FaCopy />
               </p>
             </div>
           ) : (

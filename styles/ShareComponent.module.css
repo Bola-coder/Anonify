@@ -1,0 +1,49 @@
+.share {
+  background-color: #fff;
+  width: 50vw;
+  height: 25vh;
+  text-align: center;
+  padding-top: 2%;
+  border-radius: 12px;
+  margin-top: 3%;
+  box-shadow: 2px 2px 3px 4px rgb(206, 198, 198);
+}
+
+.share p {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.share__icons {
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.share__icon {
+  flex: 1;
+}
+
+.share__icon svg {
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+
+.share__icon svg:hover {
+  transform: scale(1.1);
+}
+
+.whatsapp {
+  color: green;
+}
+
+.twitter {
+  color: rgb(38, 147, 191);
+}
+
+.instagram {
+  color: rgb(186, 21, 21);
+}

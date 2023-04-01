@@ -6,31 +6,45 @@ import Navbar from "../../Components/Navbar";
 const CreateNewMessage = () => {
   const router = useRouter();
   const slug = router.query.slug;
-  //   const apiLink = process.env.REACT_APP_ANONIFY_API;
   const apiLink = "https://anonify-backend.onrender.com";
   const link = `${apiLink}/user/me/${slug}`;
-  const [recipient, setRecipient] = useState([]);
+  const [recipient, setRecipient] = useState(null);
   const [message, setMessage] = useState("");
+  const [feedback, setFeedback] = useState("");
   let name = router.query.slug;
   name = name?.toUpperCase();
 
-  //   function to get the user data based on the slug in url
   const getUserFromSlug = () => {
     fetch(link, {
       method: "GET",
     })
       .then((res) => res.json())
       .then((data) => {
-        setRecipient(data.user);
         console.log(data);
+        setRecipient(data.user);
       })
       .catch((err) => console.log(err));
   };
+  // useEffect(() => {
+  //   const getUserFromSlug = () => {
+  //     fetch(link, {
+  //       method: "GET",
+  //     })
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         console.log(data);
+  //         setRecipient(data.user);
+  //       })
+  //       .catch((err) => console.log(err));
+  //   };
+  //   getUserFromSlug();
+  //   console.log(recipient);
+  // }, []);
 
   const handleMessageSubmit = (e) => {
     e.preventDefault();
     getUserFromSlug();
-    console.log(recipient);
+    setFeedback("");
     if (recipient) {
       const content = JSON.stringify({
         userId: recipient[0]?._id,
@@ -46,8 +60,21 @@ const CreateNewMessage = () => {
         body: content,
       })
         .then((res) => res.json())
-        .then((data) => console.log(data))
-        .catch((err) => console.log(err));
+        .then((data) => {
+          console.log(data);
+          setMessage("");
+          setFeedback(`Anonymous message sent successfully to ${name}`);
+          alert(feedback);
+        })
+        .catch((err) => {
+          console.log(err);
+          setFeedback(`Failed to send anonymous message!, please try again`);
+          alert(feedback);
+        });
+    } else {
+      console.log("error don happen");
+      setFeedback(`Failed to send anonymous message!, please try again`);
+      alert(feedback);
     }
   };
 
@@ -55,8 +82,10 @@ const CreateNewMessage = () => {
     <>
       <Navbar />
       <section className={styles.createMessage}>
-        <h2>Send an anonymous message to {name}.</h2>
-        <p>They wont know who sent it.</p>
+        <div>
+          <h2>Send an anonymous message to {name}.</h2>
+          <p>They wont know who sent it.</p>
+        </div>
         <form className={styles.createMessage__form}>
           <textarea
             type="text"

@@ -2,7 +2,8 @@
 
 .banner {
   padding: 30px 50px;
-  background-color: rgb(30, 17, 17);
+  /* background-color: rgb(30, 17, 17); */
+  background-color: var(--bg_main);
   color: #ffffff;
   height: 100vh;
 }
@@ -130,7 +131,7 @@
     margin-top: 2%;
   }
   .content {
-    margin-top: 30%;
+    margin-top: 25%;
     width: 100%;
   }
 

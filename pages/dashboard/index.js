@@ -1,21 +1,18 @@
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import dynamic from "next/dynamic";
 import { useAuth } from "../../Context/AuthContext";
 import Navbar from "../../Components/Navbar";
 import styles from "./../../styles/Dashboard.module.css";
-import ShareComponent from "../../Components/ShareComponent";
-
-// const DynamicNavbar = dynamic(() => import("../../Components/Navbar"));
+// import ShareComponent from "../../Components/ShareComponent";
 
 const Dashboard = () => {
+  document.title = "Dashboard | Anonify";
   const { checkAuthStatus, token } = useAuth();
   const router = useRouter();
   const [currentUser, setCurrentUser] = useState(null);
   const [messages, setMessages] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [share, setShare] = useState(false);
   // const apiLink = process.env.REACT_APP_ANONIFY_API;
   const apiLink = "https://anonify-backend.onrender.com";
   const messageURI = `${apiLink}/messages/`;
@@ -54,10 +51,6 @@ const Dashboard = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleShare = () => {
-    setShare((prev) => !prev);
-  };
-
   const formateDate = (dateString) => {
     const date = new Date(dateString);
     const days = [
@@ -86,9 +79,8 @@ const Dashboard = () => {
   return (
     <>
       {" "}
-      {/* <DynamicNavbar /> */}
       <Navbar />
-      <section className={`${styles.dashboard} ${share ? styles.dim : ""}`}>
+      <section className={styles.dashboard}>
         <h2 className={styles.dashboard__header}>
           {" "}
           {currentUser?.username}&apos;s Message Dashboard
@@ -106,10 +98,7 @@ const Dashboard = () => {
                 <p className={styles.content__header}>New Anonify Message:</p>
                 <p className={styles.content__text}>{message.messageContent}</p>
                 <p>-Anonify- {formateDate(message.timeSent)}</p>
-                <div className={styles.content__button}>
-                  {/* <button onClick={handleShare}>Share message</button> */}
-                  {/* <button>Archive message</button> */}
-                </div>
+                <div className={styles.content__button}></div>
               </div>
             ))
           : ""}

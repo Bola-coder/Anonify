@@ -8,6 +8,8 @@ import styles from "./../../styles/Profile.module.css";
 import { useRouter } from "next/router";
 
 const Profile = () => {
+  document.title = "Profile | Anonify";
+
   const { user, setUser, checkAuthStatus } = useAuth();
   const [link, setLink] = useState(null);
   const [showLink, setShowLink] = useState(false);

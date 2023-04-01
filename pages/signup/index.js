@@ -7,6 +7,8 @@ import SecureKey from "./../../public/images/key.png";
 import styles from "./../../styles/auth.module.css";
 
 const Signup = () => {
+  document.title = "Signup | Anonify";
+
   const { signup, loading, error } = useAuth();
 
   const [form, setForm] = useState({

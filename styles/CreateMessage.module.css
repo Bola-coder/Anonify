@@ -12,9 +12,10 @@
 }
 
 .createMessage p {
-  font-size: 1.3rem;
-  padding: 10px;
+  font-size: 1.1rem;
+  /* padding: 10px; */
   font-weight: bold;
+  margin: 10px 0;
 }
 
 .createMessage__form {
@@ -62,7 +63,7 @@
     font-size: 1.5rem;
   }
   .createMessage p {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
   .createMessage__form textarea,
   .createMessage__form button {
@@ -79,7 +80,7 @@
     font-size: 1.2rem;
   }
   .createMessage p {
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
   .createMessage__form textarea,
   .createMessage__form button {

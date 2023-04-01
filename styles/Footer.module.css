@@ -1,21 +1,44 @@
-.footer{
-    padding: 20px;
-    margin-top: 5%;
-    background-color: rgb(30, 17, 17);
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+.footer {
+  padding: 20px;
+  margin-top: 5%;
+  background-color: rgb(30, 17, 17);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
-.name, .text{
-    color: #fff;
+.name,
+.text {
+  color: #fff;
 }
 
-.name h4{
-    font-size: 1.5rem;
-
+.name h4 {
+  font-size: 1.5rem;
 }
 
-.text p{
+.text p {
+  font-size: 1.2rem;
+}
+
+@media screen and (max-width: 768px) {
+  .footer {
+    padding: 10px;
+  }
+
+  .name h4 {
     font-size: 1.2rem;
+  }
+
+  .text p {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .footer {
+    flex-direction: column;
+  }
+  .name {
+    margin-bottom: 4%;
+  }
 }

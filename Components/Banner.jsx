@@ -6,12 +6,12 @@ import styles from "./../styles/Banner.module.css";
 const Banner = () => {
   return (
     <section className={styles.banner}>
-      <div className={styles.header}>
+      {/* <div className={styles.header}>
         <p>Anonify</p>
         <Link href="/profile">        
         <p>Profile</p>
         </Link>
-      </div>
+      </div> */}
       <div className={styles.content}>
         <div className={styles.banner__text}>
           <h1>Send And Receive Anonymous Messages.</h1>
@@ -20,8 +20,8 @@ const Banner = () => {
             you can use to get message anonymously from people. It is free and
             easy to set up.
           </p>
-          <Link href='/signup'>          
-          <button>START NOW</button>
+          <Link href="/signup">
+            <button>START NOW</button>
           </Link>
         </div>
         <div className={styles.banner__image}>

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import styles from "./../../styles/CreateMessage.module.css";
 import Navbar from "../../Components/Navbar";
@@ -7,12 +8,18 @@ const CreateNewMessage = () => {
   const router = useRouter();
   const slug = router.query.slug;
   const apiLink = "https://anonify-backend.onrender.com";
-  const link = `${apiLink}/user/me/${slug}`;
+  // const link = `${apiLink}/user/me/${slug}`;
+  const [link, setLink] = useState("");
   const [recipient, setRecipient] = useState(null);
   const [message, setMessage] = useState("");
   const [feedback, setFeedback] = useState("");
   let name = router.query.slug;
   name = name?.toUpperCase();
+
+  useEffect(() => {
+    setLink(`${apiLink}/user/me/${slug}`);
+    console.log("Link is this: ", link);
+  }, [slug]);
 
   const getUserFromSlug = () => {
     fetch(link, {
@@ -25,21 +32,21 @@ const CreateNewMessage = () => {
       })
       .catch((err) => console.log(err));
   };
-  // useEffect(() => {
-  //   const getUserFromSlug = () => {
-  //     fetch(link, {
-  //       method: "GET",
-  //     })
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         console.log(data);
-  //         setRecipient(data.user);
-  //       })
-  //       .catch((err) => console.log(err));
-  //   };
-  //   getUserFromSlug();
-  //   console.log(recipient);
-  // }, []);
+  useEffect(() => {
+    // const getUserFromSlug = () => {
+    //   fetch(link, {
+    //     method: "GET",
+    //   })
+    //     .then((res) => res.json())
+    //     .then((data) => {
+    //       console.log(data);
+    //       setRecipient(data.user);
+    //     })
+    //     .catch((err) => console.log(err));
+    // };
+    getUserFromSlug();
+    console.log("Message recipient", recipient);
+  }, []);
 
   const handleMessageSubmit = (e) => {
     e.preventDefault();
@@ -80,6 +87,9 @@ const CreateNewMessage = () => {
 
   return (
     <>
+      <Head>
+        <title>Anonify | Create Message</title>
+      </Head>
       <Navbar />
       <section className={styles.createMessage}>
         <div>

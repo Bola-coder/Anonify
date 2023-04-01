@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import { useAuth } from "../../Context/AuthContext";
 import Navbar from "../../Components/Navbar";
@@ -6,7 +7,6 @@ import styles from "./../../styles/Dashboard.module.css";
 // import ShareComponent from "../../Components/ShareComponent";
 
 const Dashboard = () => {
-  document.title = "Dashboard | Anonify";
   const { checkAuthStatus, token } = useAuth();
   const router = useRouter();
   const [currentUser, setCurrentUser] = useState(null);
@@ -78,7 +78,9 @@ const Dashboard = () => {
 
   return (
     <>
-      {" "}
+      <Head>
+        <title>Anonify | Dashboard</title>
+      </Head>{" "}
       <Navbar />
       <section className={styles.dashboard}>
         <h2 className={styles.dashboard__header}>

@@ -14,12 +14,14 @@
   font-size: 1.4rem;
 }
 
+.nav__container {
+  flex-basis: 20%;
+}
 .hamburger {
   display: none;
 }
 
 .menu {
-  flex-basis: 20%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -34,14 +36,16 @@
 @media screen and (max-width: 768px) {
   /* .mobile__nav {
   } */
-
+  .nav__container {
+    flex-basis: 10%;
+  }
   .hamburger {
     display: block;
     cursor: pointer;
   }
 
   .hamburger svg {
-    font-size: 1.3rem;
+    font-size: 2.5rem;
   }
 
   .menu {

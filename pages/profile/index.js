@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { FaCopy } from "react-icons/fa";
@@ -8,8 +9,6 @@ import styles from "./../../styles/Profile.module.css";
 import { useRouter } from "next/router";
 
 const Profile = () => {
-  document.title = "Profile | Anonify";
-
   const { user, setUser, checkAuthStatus } = useAuth();
   const [link, setLink] = useState(null);
   const [showLink, setShowLink] = useState(false);
@@ -39,6 +38,7 @@ const Profile = () => {
       .writeText(text)
       .then(() => {
         alert("Text copied successfully");
+        setShowLink(false);
       })
       .catch((err) => {
         console.log("An error occured when copying text. Please try again");
@@ -52,6 +52,9 @@ const Profile = () => {
 
   return (
     <>
+      <Head>
+        <title>Anonify | Profile</title>
+      </Head>
       <Navbar />
       <section className={styles.profile}>
         <div className={styles.profileContent}>
@@ -64,12 +67,13 @@ const Profile = () => {
           />
           {showLink ? (
             <div className={styles.profile__link}>
-              <p>
-                Hi guys!!!, Send me an anonymous message using Anonify. <br />{" "}
-                Click on my link below to send me an anonymous message <br />
-                {link}
-              </p>
-              <p onClick={() => copyAnonLinkToClipboard(link)}>
+              <p>{link}</p>
+              <p
+                onClick={() =>
+                  copyAnonLinkToClipboard(`Hi guys!!!, Send me an anonymous message using Anonify.\n
+    Click on my link below to send me an anonymous message\n${link}`)
+                }
+              >
                 Copy anonymous link <FaCopy />
               </p>
             </div>

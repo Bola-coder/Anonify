@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { useAuth } from "./../../Context/AuthContext";
@@ -7,8 +8,6 @@ import SecureKey from "./../../public/images/key.png";
 import styles from "./../../styles/auth.module.css";
 
 const Login = () => {
-  document.title = "Login | Anonify";
-
   const { login, loading, error } = useAuth();
 
   const [form, setForm] = useState({
@@ -42,7 +41,9 @@ const Login = () => {
 
   return (
     <>
-      {" "}
+      <Head>
+        <title>Anonify | Login</title>
+      </Head>{" "}
       <Navbar />
       <section className={styles.auth}>
         <div className={styles.auth__image}>
